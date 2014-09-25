@@ -1,6 +1,7 @@
 //  $.getJSON()
-var url = "http://blistering-winterfell-72-128554.use1.nitrousbox.com/";
-
+//var url = "http://blistering-winterfell-72-128554.use1.nitrousbox.com/";
+//var url = "https://localhost:8000/"
+var url = "http://71.70.253.221:8000/"
 //this makes the ajax call
 //need to check if the date range is valid
 // - if the range is valid
@@ -21,7 +22,7 @@ function getFinanceRequest(table, field, year, month, day, toYear, toMonth, toDa
     //check if fields are undefined or null - chcck JS book
     alert(requestURL);
     $.getJSON(
-        requestURL, 
+        requestURL,
         {},
         function(data, status, xhr) {
             //converts JSON object to string for display
