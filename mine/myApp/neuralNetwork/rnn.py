@@ -7,7 +7,7 @@ from pylab import plot, hold, show
 from scipy import sin, rand, arange
 from pybrain.datasets            import SequenceClassificationDataSet
 from pybrain.structure.modules   import LSTMLayer, SoftmaxLayer
-from pybrain.supervised          import RPropMinusTrainer
+from pybrain.supervised          import RPropMinusTrainer, BackpropTrainer
 from pybrain.tools.validation    import testOnSequenceData
 from pybrain.tools.shortcuts     import buildNetwork
 
