@@ -23,9 +23,9 @@ tstdata._convertToOneOfMany( bounds=[0.,1.] )
 rnn = buildNetwork( trndata.indim, 5, trndata.outdim, hiddenclass=LSTMLayer, outclass=SoftmaxLayer, outputbias=False, recurrent=True)
 
 # define a training method
-trainer = RPropMinusTrainer( rnn, dataset=trndata, verbose=True )
+#trainer = RPropMinusTrainer( rnn, dataset=trndata, verbose=True )
 # instead, you may also try
-##trainer = BackpropTrainer( rnn, dataset=trndata, verbose=True, momentum=0.9, learningrate=0.00001 )
+trainer = BackpropTrainer( rnn, dataset=trndata, verbose=True, momentum=0.9, learningrate=0.00001 )
 
 # carry out the training
 for i in xrange(100):
