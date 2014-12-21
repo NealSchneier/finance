@@ -37,6 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myApp',
+    #'mine',
+    'myApp.neuralNetwork',
+    #'myApp.neuralNetwork.datasets',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -93,4 +96,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     '/home/neal/mine/myApp/static/',
+    '/home/neal/mine/myApp/neuralNetwork/',
+    #'/home/neal/mine/myApp/neuralNetwork/datasets',
 )

@@ -37,6 +37,6 @@ function getFinanceRequest(table, field, year, month, day, toYear, toMonth, toDa
 $(document).ready(function(){
     //getFinanceRequest("sectors", "price_to_free_cash_flow", "2014", "08", "14");
     //getFinanceRequest("industry", "price_to_free_cash_flow", "2014", "08", "14");
-    getFinanceRequest("companies", "price_to_free_cash_flow", "2014", "08", "07", "2014", "08", "08");
+    //getFinanceRequest("companies", "price_to_free_cash_flow", "2014", "08", "07", "2014", "08", "08");
     //getFinanceRequest("companies");
 });

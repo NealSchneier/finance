@@ -8,7 +8,7 @@ import datetime
 
 # Create your views here.
 def home(request):
-  
+  #execfile("./neuralNetwork/rnn.py")
   return render(request, 'base.html')
 
 # def sectors(request):

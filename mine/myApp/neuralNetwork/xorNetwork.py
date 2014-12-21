@@ -1,35 +1,51 @@
+
 from pybrain.datasets import SupervisedDataSet
-import random
-from pybrain.supervised.trainers import BackpropTrainer
 from pybrain.tools.shortcuts import buildNetwork
-
-dataModel = [
-    [(0,0), (0,)],
-    [(0,1), (1,)],
-    [(1,0), (1,)],
-    [(1,1), (0,)],
-]
-
-ds = SupervisedDataSet(2, 1)
-for input, target in dataModel:
-    ds.addSample(input, target)
-
-# create a large random data set
-
-random.seed()
-trainingSet = SupervisedDataSet(2, 1);
-for ri in range(0,10000):
-    input,target = dataModel[random.getrandbits(2)];
-    trainingSet.addSample(input, target)
-
-net = buildNetwork(2, 2, 1, bias=True)
+from pybrain.supervised import BackpropTrainer
 
 
-trainer = BackpropTrainer(net, ds, learningrate = 0.001, momentum = 0.99)
-trainer.trainOnDataset(ds)
-trainer.trainUntilConvergence(	 verbose=True, maxEpochs=10)
+def make_dataset():
+    """
+    Creates a set of training data.
+    """
+    data = SupervisedDataSet(2,1)
 
-print '0,0->', net.activate([0,0])
-print '0,1->', net.activate([0,1])
-print '1,0->', net.activate([1,0])
-print '1,1->', net.activate([1,1])
+    data.addSample([1,1],[0])
+    data.addSample([1,0],[1])
+    data.addSample([0,1],[1])
+    data.addSample([0,0],[0])
+
+    return data
+
+
+def training(d):
+    """
+    Builds a network and trains it.
+    """
+    n = buildNetwork(d.indim, 4, d.outdim,recurrent=True)
+    t = BackpropTrainer(n, d, learningrate = 0.01, momentum = 0.99, verbose = True)
+    for epoch in range(0,500):
+        t.train()
+    return t
+
+
+def test(trained):
+    """
+    Builds a new test dataset and tests the trained network on it.
+    """
+    testdata = SupervisedDataSet(2,1)
+    testdata.addSample([1,1],[0])
+    testdata.addSample([1,0],[1])
+    testdata.addSample([0,1],[1])
+    testdata.addSample([0,0],[0])
+    trained.testOnData(testdata, verbose= True)
+
+
+def run():
+    """
+    Use this function to run build, train, and test your neural network.
+    """
+    trainingdata = make_dataset()
+    trained = training(trainingdata)
+    test(trained)
+run()
