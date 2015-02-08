@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-# Example script for recurrent network usage in PyBrain.
-__author__ = "Martin Felder"
-__version__ = '$Id$'
 
 from pylab import plot, hold, show
 from scipy import sin, rand, arange
@@ -19,7 +16,7 @@ import numpy as np
 sys.path.append("/home/neal/git/finance/mine/")
 os.environ["DJANGO_SETTINGS_MODULE"] = "mine.settings"
 
-from myApp.models import Sector, Industry, Company
+from myApp.models import Sector, Industry, Company, Sectors, Industries, Companies
 from datasets import generateNoisySines
 year = 2014
 day = 29
@@ -34,7 +31,7 @@ hidden = 5
 #	datetime.datetime.combine(datetime.datetime(year, month, day), datetime.time.max))})
 
 #print datetime.datetime(2014, 9, 29)
-sectors = Sector.objects.filter().values("day_price_change")
+sectors = Sectors.objects.filter().values("day_price_change")
 numSectors = 9
 #print sectors['price_to_book']
 data = []
