@@ -29,5 +29,7 @@ urlpatterns = patterns('',
                        
     url(r'^company/$', views.company),
    
-                       
+    url(r'^sectors/([0-9]{1})/$', views.sectorHistory),    
+    url(r'^industries/([0-9]+)*/$', views.industriesHistory),    
+
 )
